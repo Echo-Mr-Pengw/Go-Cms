@@ -43,12 +43,10 @@
             //监听提交
             form.on('submit(login)', function(data){
                 // 登录
-                $.post("/admin/login", data.field, function(ret) {
-                    var location_href;
-                    location_href = ret.errno != 0 ? '/admin' : '/admin/index';
-                    console.log(ret.errno);
-                    layer.msg(ret.errmsg, function() {
-                        console.log(location_href, 111)
+                $.post("/login", data.field, function(ret) {
+                    console.log(ret);
+                    location_href = ret.stat != 0 ? '/main' : '/';
+                    layer.msg(ret.msg, function() {
                         location.href = location_href;
                     });
                 });
