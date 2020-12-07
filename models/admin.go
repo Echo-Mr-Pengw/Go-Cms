@@ -1,3 +1,5 @@
+// 管理员
+
 package models
 
 import (
@@ -13,7 +15,7 @@ type Admin struct {
 	PassWord string `orm:"column(password); size(32); deafult(); description(密码)"`
 	Grade uint8 `orm:"column(grade); default(1); description(管理员等级 1:超管 2:普通)"`
 	Staus uint8 `orm:"column(status); default(1); description(状态 1:正常 2:冻结)"`
-	CreateTime time.Time `orm:"column(create_time); auto_now_add; type(datetime)"`
+	CreateTime time.Time `orm:"column(create_time); auto_now_add; type(datetime); description(创建时间)"`
 }
 
 // 定义表的存储引擎
