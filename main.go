@@ -1,11 +1,11 @@
 package main
 
 import (
+	"Permission-Platform/models"
 	_ "Permission-Platform/routers"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"Permission-Platform/models"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func init() {
@@ -22,7 +22,8 @@ func init() {
 	dataSource := mysqlUser + ":" + mysqlPass + "@tcp(" + mysqlHost + ":" + mysqlPort+")/" + dataBase + "?charset=" + charset
 
 	// 注册model
-	orm.RegisterModelWithPrefix("tbl_", new(models.Admin))
+	orm.RegisterModelWithPrefix("tbl_", new(models.Admin), new(models.App), new(models.Resource), new(models.Role), new(models.User), new(models.Department),
+		new(models.Application), new(models.UserRoleRelate), new(models.DeptRoleRelate))
 	// 注册驱动
 	orm.RegisterDriver(mysqlDriver, orm.DRMySQL)
 	// 注册db

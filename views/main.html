@@ -22,7 +22,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="/admin/index">new1024kb后台</a></div>
+        <a href="/admin/index">权限管理平台</a></div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item to-index">
             <a href="/admin/logout">退出</a></dd>
@@ -33,6 +33,19 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont left-nav-li" lay-tips="应用管理">&#xe723;</i>
+                    <cite>应用管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a onclick="xadmin.add_tab('应用列表','/app/list')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>应用列表</cite></a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont left-nav-li" lay-tips="文章管理">&#xe723;</i>

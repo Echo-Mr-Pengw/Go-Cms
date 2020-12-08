@@ -2,6 +2,8 @@ package admin
 
 import (
 	"Permission-Platform/models"
+	"crypto/md5"
+	"fmt"
 )
 
 type IndexController struct {
@@ -27,8 +29,8 @@ func (c *IndexController) Login() {
 	}
 
 	// 密码不能为空
-	if passWord == "" {
-		c.ResponseJson(0, "密码不能为空", "")
+	if len(passWord) != 6 {
+		c.ResponseJson(0, "密码位数不合法", "")
 	}
 
 	// 通过用户名获取用户信息
@@ -39,7 +41,8 @@ func (c *IndexController) Login() {
 		c.ResponseJson(0, "管理员不存在", "")
 	}
 
-	if passWord != adminData.PassWord {
+	md5Str := fmt.Sprintf("%x", md5.Sum([]byte(passWord)))
+	if md5Str != adminData.PassWord {
 		c.ResponseJson(0, "用户名或者密码错误", "")
 	}
 
