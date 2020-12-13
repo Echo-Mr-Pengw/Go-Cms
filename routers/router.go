@@ -24,4 +24,13 @@ func init() {
     // 编辑应用
    beego.Router("/app/edit", &admin.AppController{}, "get,post:Edit")
 
+    // 管理员相关路由
+    // 管理员列表
+    beego.Router("admin/list", &admin.AdminController{}, "get,post:List")
+    // 管理员添加
+    beego.Router("admin/add", &admin.AdminController{}, "get,post:Add")
+    // 管理员编辑
+    beego.Router("admin/edit", &admin.AdminController{}, "get,post:Edit")
+
+
 }

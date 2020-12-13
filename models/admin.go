@@ -14,7 +14,7 @@ type Admin struct {
 	AppIds string `orm:"column(app_ids); size(128); default(); description(拥有的应用 超管默认为空，拥有全部)"`
 	PassWord string `orm:"column(password); size(32); deafult(); description(密码)"`
 	Grade uint8 `orm:"column(grade); default(1); description(管理员等级 1:超管 2:普通)"`
-	Staus uint8 `orm:"column(status); default(1); description(状态 1:正常 2:冻结)"`
+	Status uint8 `orm:"column(status); default(1); description(状态 1:正常 2:冻结)"`
 	CreateTime time.Time `orm:"column(create_time); auto_now_add; type(datetime); description(创建时间)"`
 }
 
@@ -28,4 +28,11 @@ func GetAdminInfoByName(userName string) (*Admin, error) {
 	admin := new(Admin)
 	err := orm.NewOrm().QueryTable(admin).Filter("name", userName).Filter("status", 1).One(admin, "password")
 	return admin, err
+}
+
+// 获取所有的管理员数据
+func GetAdminList() (admin []Admin, num int64){
+	admin = []Admin{}
+	num, _ = orm.NewOrm().QueryTable(new(Admin)).OrderBy("-id").All(&admin)
+	return
 }

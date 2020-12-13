@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>标签添加</title>
+    <title>管理员添加</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -23,7 +23,7 @@
         <form class="layui-form">
             <div class="layui-form-item">
                 <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>应用名
+                    <span class="x-red">*</span>管理员
                 </label>
                 <div class="layui-input-inline">
                     <input type="text" id="name" name="name" required="" lay-verify="required"
@@ -34,7 +34,37 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label"><span class="x-red">*</span>应用状态</label>
+                <label class="layui-form-label"><span class="x-red">*</span>等级</label>
+                <div class="layui-input-inline">
+                    <select  name="level" class="level" lay-filter="level" lay-verify="required">
+                        <option value="">请选择管理员等级</option>
+                    {{range $i, $v := .adminLevelMap}}
+                        <option value="{{$i}}">{{$v}}</option>
+                    {{end}}
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="username" class="layui-form-label">
+                    <span class="x-red">*</span>拥有的应用
+                </label>
+                <div class="layui-input-inline">
+                    <select id="appids" name="appids">
+                        <option value="">请选择应用</option>
+                        {{range  $v := .appList}}
+                            <option value="{{$v.Id}}">{{$v.Name}}</option>
+                        {{end}}
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="x-red">*</span>状态</label>
                 <div class="layui-input-block">
                     {{range $i, $v := .statusMap}}
                         <input type="radio" name="status" lay-skin="primary" title="{{$v}}"  value="{{$i}}" checked="">
@@ -51,7 +81,8 @@
         </form>
     </div>
 </div>
-<script>layui.use(['form', 'layer'],
+<script>
+    layui.use(['form', 'layer'],
         function() {
             $ = layui.jquery;
             var form = layui.form,
@@ -61,15 +92,25 @@
             form.verify({
                 name: function(value) {
                     if (value.length == 0) {
-                        return '应用名不能为空';
+                        return '管理员不能为空';
                     }
                 },
+            });
+
+            // 如果选择了超级管理员，置灰应用选择
+            form.on('select(level)', function(data) {
+                if (data.value == 1) {
+                    $("#appids").attr("disabled", "disabled");
+                } else {
+                    $("#appids").removeAttr("disabled");
+                }
+                form.render('select');
             });
 
             //监听提交
             form.on('submit(add)',
                 function(data) {
-                    $.post('/app/add', data.field, function(ret) {
+                    $.post('/admin/add', data.field, function(ret) {
                         var icon = (ret.stat == 0) ? 5 : 6;  // 5：失败提示 6：成功提示
                         layer.msg(ret.msg, {icon: icon}, function() {
                             //关闭当前frame

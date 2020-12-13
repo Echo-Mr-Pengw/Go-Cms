@@ -5,13 +5,6 @@ import (
 	"strconv"
 	"strings"
 )
-
-// 应用状态定义
-var statusMap = map[uint8]string{
-	1 : "正常",
-	2 : "冻结1",
-}
-
 type AppController struct {
 	BaseController
 }
