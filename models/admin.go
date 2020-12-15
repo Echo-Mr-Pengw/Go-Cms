@@ -8,14 +8,14 @@ import (
 )
 
 type Admin struct {
-	Id uint `orm:"column(id); pk; auto; description(主键)"`
-	Emplid string `orm:"column(emplid); size(32); default(); description(管理员工号)"`
-	Name string `orm:"column(name); size(32); default(); description(管理员姓名)"`
-	AppIds string `orm:"column(app_ids); size(128); default(); description(拥有的应用 超管默认为空，拥有全部)"`
-	PassWord string `orm:"column(password); size(32); deafult(); description(密码)"`
-	Grade uint8 `orm:"column(grade); default(1); description(管理员等级 1:超管 2:普通)"`
-	Status uint8 `orm:"column(status); default(1); description(状态 1:正常 2:冻结)"`
-	CreateTime time.Time `orm:"column(create_time); auto_now_add; type(datetime); description(创建时间)"`
+	Id uint `orm:"column(id); pk; auto; description(主键),"form:"-"`
+	Emplid string `orm:"column(emplid); size(32); default(); description(管理员工号),"form:"-"`
+	Name string `orm:"column(name); size(32); default(); description(管理员姓名),"form:"name"`
+	AppIds string `orm:"column(app_ids); size(128); default(); description(拥有的应用 超管默认为空，拥有全部),"form:"appids"`
+	PassWord string `orm:"column(password); size(32); deafult(); description(密码),"form:"password"`
+	Grade uint8 `orm:"column(grade); default(1); description(管理员等级 1:超管 2:普通),"form:"grade"`
+	Status uint8 `orm:"column(status); default(1); description(状态 1:正常 2:冻结),"form:"status"`
+	CreateTime time.Time `orm:"column(create_time); auto_now_add; type(datetime); description(创建时间),"form:"-"`
 }
 
 // 定义表的存储引擎
@@ -34,5 +34,11 @@ func GetAdminInfoByName(userName string) (*Admin, error) {
 func GetAdminList() (admin []Admin, num int64){
 	admin = []Admin{}
 	num, _ = orm.NewOrm().QueryTable(new(Admin)).OrderBy("-id").All(&admin)
+	return
+}
+
+// 添加管理员
+func AddAdminInfo(app *Admin) (id int64) {
+	id, _ = orm.NewOrm().Insert(app)
 	return
 }

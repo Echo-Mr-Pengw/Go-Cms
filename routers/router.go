@@ -26,11 +26,13 @@ func init() {
 
     // 管理员相关路由
     // 管理员列表
-    beego.Router("admin/list", &admin.AdminController{}, "get,post:List")
+    beego.Router("/admin/list", &admin.AdminController{}, "get,post:List")
     // 管理员添加
-    beego.Router("admin/add", &admin.AdminController{}, "get,post:Add")
+    beego.Router("/admin/add", &admin.AdminController{}, "get,post:Add")
     // 管理员编辑
-    beego.Router("admin/edit", &admin.AdminController{}, "get,post:Edit")
+    beego.Router("/admin/edit", &admin.AdminController{}, "get,post:Edit")
 
-
+    // 用户相关路由
+    // 搜索用户
+    beego.Router("/user/searchuser", &admin.UserController{}, "post:SearchNormalUser")
 }
