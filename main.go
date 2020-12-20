@@ -22,6 +22,7 @@ func init() {
 	dataSource := mysqlUser + ":" + mysqlPass + "@tcp(" + mysqlHost + ":" + mysqlPort+")/" + dataBase + "?charset=" + charset
 
 	// 注册model
+	//orm.RegisterModelWithPrefix("tbl_", new(models.User));
 	orm.RegisterModelWithPrefix("tbl_", new(models.Admin), new(models.App), new(models.Resource), new(models.Role), new(models.User), new(models.Department),
 		new(models.Application), new(models.UserRoleRelate), new(models.DeptRoleRelate))
 	// 注册驱动
