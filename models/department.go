@@ -2,7 +2,10 @@
 
 package models
 
-import "time"
+import (
+	"github.com/astaxie/beego/orm"
+	"time"
+)
 
 type Department struct {
 	Id uint `orm:"column(id); pk; auto; description(主键 部门id)"`
@@ -14,4 +17,11 @@ type Department struct {
 // 定义表的存储引擎
 func (u *Department) TableEngine() string {
 	return "INNODB"
+}
+
+// 获取所有的部门
+func GetAllDeptList() ([]Department, int64){
+	var dept []Department
+	num, _ := orm.NewOrm().QueryTable(new(Department)).OrderBy("-id").All(&dept)
+	return dept, num
 }

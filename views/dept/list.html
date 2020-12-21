@@ -32,33 +32,27 @@
             <div class="layui-card">
                 <div class="layui-card-header">
                     <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-                    <button class="layui-btn" onclick="xadmin.open('添加管理员','/admin/add',700,500)"><i class="layui-icon"></i>添加</button>
+                    <button class="layui-btn" onclick="xadmin.open('添加用户','/user/add',600,400)"><i class="layui-icon"></i>添加</button>
                 </div>
                 <div class="layui-card-body ">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>工号</th>
-                            <th>姓名</th>
-                            <th>拥有的应用</th>
-                            <th>等级</th>
+                            <th>部门id</th>
+                            <th>部门名</th>
                             <th>状态</th>
                             <th>添加时间</th>
                             <th>操作</th>
                         </thead>
                         <tbody>
-                        {{range .adminList}}
+                        {{range .deptList}}
                             <tr>
                                 <td>{{.Id}}</td>
-                                <td>{{.Emplid}}</td>
                                 <td>{{.Name}}</td>
-                                <td>{{.AppIds}}</td>
-                                <td>{{index $.adminLevelMap .Grade}}</td>
                                 <td>{{index $.statusMap .Status}}</td>
                                 <td>{{.CreateTime}}</td>
                                 <td class="td-manage">
-                                    <a title="编辑"  onclick="xadmin.open('编辑','/app/edit?id={{.Id}}')" href="javascript:;">
+                                    <a title="编辑"  onclick="xadmin.open('编辑','/user/edit?id={{.Id}}')" href="javascript:;">
                                         <i class="layui-icon">&#xe642;</i>
                                     </a>
                                 </td>

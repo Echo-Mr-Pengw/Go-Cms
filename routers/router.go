@@ -37,4 +37,7 @@ func init() {
     beego.Router("/user/searchuser", &admin.UserController{}, "post:SearchNormalUser")
     // 用户列表
     beego.Router("/user/list", &admin.UserController{}, "get,post:List")
+
+    // 部门相关路由
+    beego.Router("/dept/list", &admin.DeptController{}, "get,post:List")
 }
