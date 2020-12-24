@@ -16,14 +16,6 @@ func init() {
     // 登录成功主页
     beego.Router("/main", &admin.MainController{}, "get:Index")
 
-    // 应用相关路由
-    // 应用列表
-    beego.Router("/app/list", &admin.AppController{}, "get:GetAppList")
-    // 添加应用
-    beego.Router("/app/add", &admin.AppController{}, "get,post:Add")
-    // 编辑应用
-   beego.Router("/app/edit", &admin.AppController{}, "get,post:Edit")
-
     // 管理员相关路由
     // 管理员列表
     beego.Router("/admin/list", &admin.AdminController{}, "get,post:List")
@@ -31,13 +23,4 @@ func init() {
     beego.Router("/admin/add", &admin.AdminController{}, "get,post:Add")
     // 管理员编辑
     beego.Router("/admin/edit", &admin.AdminController{}, "get,post:Edit")
-
-    // 用户相关路由
-    // 搜索用户
-    beego.Router("/user/searchuser", &admin.UserController{}, "post:SearchNormalUser")
-    // 用户列表
-    beego.Router("/user/list", &admin.UserController{}, "get,post:List")
-
-    // 部门相关路由
-    beego.Router("/dept/list", &admin.DeptController{}, "get,post:List")
 }

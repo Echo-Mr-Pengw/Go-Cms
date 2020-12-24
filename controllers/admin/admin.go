@@ -35,9 +35,9 @@ func (c *AdminController) Add() {
 		c.ResponseJson(1, "添加成功", "")
 	}
 
-	appList, _ := models.GetAllAppList()
+	//appList, _ := models.GetAllAppList()
 
-	c.Data["appList"]       = appList
+	//c.Data["appList"]       = appList
 	c.Data["statusMap"]     = statusMap
 	c.Data["adminLevelMap"] = adminLevel
 	c.TplName = "admin/add.html"
