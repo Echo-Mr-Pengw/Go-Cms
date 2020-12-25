@@ -8,10 +8,8 @@ import (
 )
 
 type Admin struct {
-	Id uint `orm:"column(id); pk; auto; description(主键);"form:"-"`
-	// Emplid string `orm:"column(emplid); size(32); default(); description(管理员工号),"form:"-"`
-	Name string `orm:"column(name); size(32); default(); description(管理员姓名);"form:"name"`
-	// AppIds string `orm:"column(app_ids); size(128); default(); description(拥有的应用 超管默认为空，拥有全部),"form:"appids"`
+	Id         uint      `orm:"column(id); pk; auto; description(主键);"form:"-"`
+	Name       string    `orm:"column(name); size(32); default(); description(管理员姓名);"form:"name"`
 	PassWord   string    `orm:"column(password); size(32); deafult(); description(密码);"form:"password"`
 	Grade      uint8     `orm:"column(grade); default(1); description(管理员等级 1:超管 2:普通);"form:"grade"`
 	Status     uint8     `orm:"column(status); default(1); description(状态 1:正常 2:冻结);"form:"status"`
@@ -41,4 +39,24 @@ func GetAdminList() (admin []Admin, num int64) {
 func AddAdminInfo(app *Admin) (id int64) {
 	id, _ = orm.NewOrm().Insert(app)
 	return
+}
+
+// 通过该管理员id,获取管理员信息
+func GetAdminInfoById(id string) (*Admin, error){
+	admin := new(Admin)
+	err := orm.NewOrm().QueryTable(admin).Filter("id", id).One(admin, "id", "name", "grade", "status")
+	return admin, err
+}
+
+// 通过管理员id,更新管理员信息
+func UpdateAdminInfoById(id, grade, status string) int64 {
+	updateRows, err := orm.NewOrm().QueryTable(new(Admin)).Filter("id", id).Update(orm.Params{
+		"grade": grade,
+		"status": status,
+	})
+
+	if err != nil {
+		updateRows = 0
+	}
+	return updateRows
 }

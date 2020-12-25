@@ -72,22 +72,6 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>拥有的应用
-                </label>
-                <div class="layui-input-inline">
-                    <select id="appids" name="appids">
-                        <option value="">请选择应用</option>
-                        {{range  $v := .appList}}
-                            <option value="{{$v.Id}}">{{$v.Name}}</option>
-                        {{end}}
-                    </select>
-                </div>
-                <div class="layui-form-mid layui-word-aux">
-                    <span class="x-red">*</span>
-                </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label"><span class="x-red">*</span>状态</label>
                 <div class="layui-input-block">
                     {{range $i, $v := .statusMap}}

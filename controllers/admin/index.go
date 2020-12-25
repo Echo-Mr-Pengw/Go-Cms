@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"Permission-Platform/models"
+	"Go-Cms/models"
 	"crypto/md5"
 	"fmt"
 )
@@ -12,7 +12,7 @@ type IndexController struct {
 
 // 后台首页 登录页面
 func (c *IndexController) Index() {
-	c.TplName = "index.html"
+	c.TplName = "admin/index.html"
 }
 
 // 登录

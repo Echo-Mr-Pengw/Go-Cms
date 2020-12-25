@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"Permission-Platform/models"
+	"Go-Cms/models"
 	"crypto/md5"
 	"fmt"
 )
@@ -17,7 +17,7 @@ func (c *AdminController) List() {
 	c.Data["adminLevelMap"] = adminLevel
 	c.Data["adminList"]     = adminList
 
-	c.TplName = "admin/list.html"
+	c.TplName = "admin/admin/list.html"
 }
 
 func (c *AdminController) Add() {
@@ -35,14 +35,35 @@ func (c *AdminController) Add() {
 		c.ResponseJson(1, "添加成功", "")
 	}
 
-	//appList, _ := models.GetAllAppList()
-
-	//c.Data["appList"]       = appList
 	c.Data["statusMap"]     = statusMap
 	c.Data["adminLevelMap"] = adminLevel
-	c.TplName = "admin/add.html"
+	c.TplName = "admin/admin/add.html"
 }
 
 func (c *AdminController) Edit() {
-	c.TplName = "admin/edit.html"
+
+	if c.IsPost() {
+		id         := c.GetString("id", "")
+		grade      := c.GetString("grade", "", "")
+		status     := c.GetString("status", "")
+
+		// 参数验证
+		if id == "" || grade == "" || status == "" {
+			c.ResponseJson(0, "参数错误", "")
+		}
+
+		updateRows := models.UpdateAdminInfoById(id, grade, status)
+		if updateRows == 0 {
+			c.ResponseJson(0, "编辑失败", "")
+		}
+		c.ResponseJson(1, "编辑成功", "")
+	}
+
+	id      := c.GetString("id", "")
+	info,_  := models.GetAdminInfoById(id)
+
+	c.Data["info"]          = info
+	c.Data["statusMap"]     = statusMap
+	c.Data["adminLevelMap"] = adminLevel
+	c.TplName = "admin/admin/edit.html"
 }

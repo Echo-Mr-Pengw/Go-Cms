@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Permission-Platform/models"
-	_ "Permission-Platform/routers"
+	"Go-Cms/models"
+	_ "Go-Cms/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"

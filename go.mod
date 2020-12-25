@@ -1,4 +1,4 @@
-module Permission-Platform
+module Go-Cms
 
 go 1.15
 

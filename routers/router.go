@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"Permission-Platform/controllers/admin"
+	"Go-Cms/controllers/admin"
 	"github.com/astaxie/beego"
 )
 
