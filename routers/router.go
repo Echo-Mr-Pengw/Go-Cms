@@ -23,4 +23,9 @@ func init() {
     beego.Router("/admin/add", &admin.AdminController{}, "get,post:Add")
     // 管理员编辑
     beego.Router("/admin/edit", &admin.AdminController{}, "get,post:Edit")
+
+    // 友情链接
+    beego.Router("/links/list", &admin.LinksController{}, "get:List")
+    beego.Router("/links/add", &admin.LinksController{}, "get,post:Add")
+    beego.Router("/links/edit", &admin.LinksController{}, "get,post:Edit")
 }

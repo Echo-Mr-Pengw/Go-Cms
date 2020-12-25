@@ -16,6 +16,6 @@ type Profile struct {
 }
 
 // 定义表的存储引擎
-func (u *Profile) TableEngine() string {
+func (p *Profile) TableEngine() string {
 	return "INNODB"
 }

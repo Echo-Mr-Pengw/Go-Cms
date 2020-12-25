@@ -96,23 +96,6 @@
             var form = layui.form,
                 layer = layui.layer;
 
-            // 实时搜索
-            var name = $("#name").val();
-            $("#name").bind("input propertychange",function(event){
-                // if (name.length > 0) {
-                    $.post('/user/searchuser', {"name": name}, function(ret) {
-                        console.log(ret);
-                        return false;
-                        var icon = (ret.stat == 0) ? 5 : 6;  // 5：失败提示 6：成功提示
-                        layer.msg(ret.msg, {icon: icon}, function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新
-                            xadmin.father_reload();
-                        });
-                    });
-              // }
-            });
             //自定义验证规则
             form.verify({
                 name: function(value) {
@@ -126,16 +109,6 @@
                     }
                 },
                 });
-
-            // 如果选择了超级管理员，置灰应用选择
-            form.on('select(grade)', function(data) {
-                if (data.value == 1) {
-                    $("#appids").attr("disabled", "disabled");
-                } else {
-                    $("#appids").removeAttr("disabled");
-                }
-                form.render('select');
-            });
 
             //监听提交
             form.on('submit(add)',

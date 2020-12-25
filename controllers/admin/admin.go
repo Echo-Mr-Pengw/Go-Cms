@@ -13,10 +13,10 @@ type AdminController struct {
 func (c *AdminController) List() {
 	// 管理员列表
 	adminList, _ := models.GetAdminList()
-	c.Data["statusMap"]     = statusMap
-	c.Data["adminLevelMap"] = adminLevel
-	c.Data["adminList"]     = adminList
 
+	c.Data["statusMap"]      = statusMap
+	c.Data["adminLevelMap"]  = adminLevel
+	c.Data["adminList"]      = adminList
 	c.TplName = "admin/admin/list.html"
 }
 
@@ -35,9 +35,12 @@ func (c *AdminController) Add() {
 		c.ResponseJson(1, "添加成功", "")
 	}
 
-	c.Data["statusMap"]     = statusMap
-	c.Data["adminLevelMap"] = adminLevel
-	c.TplName = "admin/admin/add.html"
+	c.LayoutSections = make(map[string]string)
+
+	c.Data["statusMap"]      = statusMap
+	c.Data["adminLevelMap"]  = adminLevel
+
+	c.TplName  = "admin/admin/add.html"
 }
 
 func (c *AdminController) Edit() {
@@ -65,5 +68,6 @@ func (c *AdminController) Edit() {
 	c.Data["info"]          = info
 	c.Data["statusMap"]     = statusMap
 	c.Data["adminLevelMap"] = adminLevel
-	c.TplName = "admin/admin/edit.html"
+
+	c.TplName  = "admin/admin/edit.html"
 }
