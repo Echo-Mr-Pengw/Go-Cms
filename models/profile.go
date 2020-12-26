@@ -3,6 +3,7 @@
 package models
 
 import (
+	"github.com/astaxie/beego/orm"
 	"time"
 )
 
@@ -18,4 +19,20 @@ type Profile struct {
 // 定义表的存储引擎
 func (p *Profile) TableEngine() string {
 	return "INNODB"
+}
+
+// 获取个人简介
+func GetProfileList() (profile []Profile, num int64) {
+	profile = []Profile{}
+	num, _ = orm.NewOrm().QueryTable(new(Profile)).All(&profile)
+	return
+}
+
+// 添加简介
+func AddProfile(p *Profile) (addRow int64) {
+	addRow, err := orm.NewOrm().Insert(p)
+	if err != nil {
+		addRow = 0
+	}
+	return
 }

@@ -22,6 +22,13 @@ var adminLevel = map[uint8]string {
 	2: "普通管理员",
 }
 
+// 图片的格式
+var imgExtName = map[string]string {
+	".jpg": ".jpg",
+	".jpeg": ".jepg",
+	".png": ".png",
+}
+
 // 定义返回消息体
 type Response struct {
 	Stat uint8 `json:"stat"`
@@ -39,6 +46,7 @@ func (c *BaseController) ResponseJson(stat uint8, msg string, data interface{}) 
 
 	c.Data["json"] = resp
 	c.ServeJSON()
+	c.StopRun()
 }
 
 func (c *BaseController) IsPost() bool {

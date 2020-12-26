@@ -28,4 +28,9 @@ func init() {
     beego.Router("/links/list", &admin.LinksController{}, "get:List")
     beego.Router("/links/add", &admin.LinksController{}, "get,post:Add")
     beego.Router("/links/edit", &admin.LinksController{}, "get,post:Edit")
+
+    // 个人简介
+    beego.Router("/profile/list", &admin.ProfileController{}, "get:List")
+    beego.Router("/profile/add", &admin.ProfileController{}, "get,post:Add")
+    beego.Router("/profile/edit", &admin.ProfileController{}, "get,post:Edit")
 }
