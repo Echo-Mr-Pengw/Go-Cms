@@ -12,8 +12,8 @@ func (c *LinksController) List() {
 
 	c.LayoutSections = make(map[string]string)
 
-	c.Data["linksList"]      = list
-	c.Data["statusMap"]      = statusMap
+	c.Data["linksList"] = list
+	c.Data["statusMap"] = statusMap
 
 	c.TplName  = "admin/links/list.html"
 }

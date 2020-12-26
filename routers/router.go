@@ -33,4 +33,9 @@ func init() {
     beego.Router("/profile/list", &admin.ProfileController{}, "get:List")
     beego.Router("/profile/add", &admin.ProfileController{}, "get,post:Add")
     beego.Router("/profile/edit", &admin.ProfileController{}, "get,post:Edit")
+
+    // 标签列表
+    beego.Router("tag/list", &admin.TagController{}, "get:List")
+    beego.Router("tag/add", &admin.TagController{}, "get,post:Add")
+    beego.Router("tag/edit", &admin.TagController{}, "get,post:Edit")
 }
