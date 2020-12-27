@@ -27,6 +27,13 @@ func GetTagsList() (tag []ArticleTag, num int64) {
 	return
 }
 
+// 获取有效的标签
+func GetNormalTagsList() (tag []ArticleTag, num int64) {
+	tag = []ArticleTag{}
+	num, _ = orm.NewOrm().QueryTable(new(ArticleTag)).Filter("status", 1).OrderBy("-id").All(&tag)
+	return
+}
+
 func AddTag(a *ArticleTag) (addRow int64) {
 	addRow, err := orm.NewOrm().Insert(a)
 	if err != nil {
