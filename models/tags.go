@@ -61,3 +61,27 @@ func UpdateTagById(id, name, status string) (updateRows int64) {
 	}
 	return
 }
+
+// 增加属于该标签的文章数
+func AddArticleNumByTagId(tagId uint) (updateRows int64){
+	updateRows, err := orm.NewOrm().QueryTable(new(ArticleTag)).Filter("id", tagId).Update(orm.Params{
+		"total": orm.ColValue(orm.ColAdd, 1),
+	})
+
+	if err != nil {
+		updateRows = 0
+	}
+	return
+}
+
+// 减少属于该标签的文章数
+func MinusArticleNumByTagId(tagId uint) (updateRows int64){
+	updateRows, err := orm.NewOrm().QueryTable(new(ArticleTag)).Filter("id", tagId).Update(orm.Params{
+		"total": orm.ColValue(orm.ColMinus, 1),
+	})
+
+	if err != nil {
+		updateRows = 0
+	}
+	return
+}

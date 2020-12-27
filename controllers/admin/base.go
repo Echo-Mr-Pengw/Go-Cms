@@ -10,6 +10,12 @@ type BaseController struct {
 	beego.Controller
 }
 
+// 定义状态常量
+const (
+	NORMAL = 1
+	FROZEN = 2
+)
+
 // 状态定义
 var statusMap = map[uint8]string{
 	1 : "正常",

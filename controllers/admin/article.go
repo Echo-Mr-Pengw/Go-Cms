@@ -2,6 +2,7 @@ package admin
 
 import (
 	"Go-Cms/models"
+	"strconv"
 )
 
 type ArticleController struct {
@@ -38,6 +39,14 @@ func (c *ArticleController) Add() {
 		if models.AddArticle(&article) == 0 {
 			c.ResponseJson(0, "添加失败", "")
 		}
+
+		// 文章状态为正常：更新该标签下的文章数量
+		switch article.Status {
+			// 正常
+			case NORMAL:
+				models.AddArticleNumByTagId(article.TagId)
+		}
+
 		c.ResponseJson(1, "添加成功", "")
 	}
 
@@ -64,6 +73,19 @@ func (c *ArticleController) Edit() {
 		if models.UpdateArticleById(id, tag_id, title, content, author, status) == 0 {
 			c.ResponseJson(0, "更新失败", "")
 		}
+
+		// 文章状态为正常：更新该标签下的文章数量
+		intStatus, _ := strconv.Atoi(status)
+		intTagId, _ := strconv.ParseUint(tag_id, 10, 0)
+		switch intStatus {
+		// 正常
+		case NORMAL:
+			models.AddArticleNumByTagId(uint(intTagId))
+		// 冻结
+		case FROZEN:
+			models.MinusArticleNumByTagId(uint(intTagId))
+		}
+
 		c.ResponseJson(1, "更新成功", "")
 	}
 
