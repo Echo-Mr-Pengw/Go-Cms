@@ -28,6 +28,11 @@ func GetProfileList() (profile []Profile, num int64) {
 	return
 }
 
+func GetOneProfile() (profile Profile, num int64) {
+	profile = Profile{}
+	num, _ = orm.NewOrm().QueryTable(new(Profile)).All(&profile)
+	return
+}
 // 添加简介
 func AddProfile(p *Profile) (addRow int64) {
 	addRow, err := orm.NewOrm().Insert(p)
