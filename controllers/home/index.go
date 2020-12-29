@@ -10,6 +10,7 @@ type IndexController struct {
 }
 
 func (c *IndexController) Index() {
+	
 	// 个人简介
 	profile,_ := models.GetOneProfile()
 	// 文章列表
