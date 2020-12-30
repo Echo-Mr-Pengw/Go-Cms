@@ -23,10 +23,17 @@ func (u *Article) TableEngine() string {
 	return "INNODB"
 }
 
-// 获取文章
+// 获取所有的文章
 func GetArticleList() (art []Article, num int64) {
 	art = []Article{}
 	num, _ = orm.NewOrm().QueryTable(new(Article)).OrderBy("-id").All(&art)
+	return
+}
+
+// 获取正常的文章
+func GetNormalArticleList() (art []Article, num int64) {
+	art = []Article{}
+	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("status", 1).OrderBy("-id").All(&art)
 	return
 }
 
@@ -61,3 +68,18 @@ func UpdateArticleById(id, tag_id, title, content, author, status string) (updat
 	}
 	return
 }
+
+// 最近10篇新文章
+func GetTopTenNormalArticle() (art []Article, num int64) {
+	art = []Article{}
+	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("status", 1).OrderBy("-id").Limit(10).All(&art, "id", "title")
+	return
+}
+
+// 通过文章id获取点击量前10的文章
+func GetTopTenNormalArticleByArtId(articleId []uint) (art []Article, num int64) {
+	art = []Article{}
+	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("id__in", articleId).All(&art, "id", "title")
+	return
+}
+

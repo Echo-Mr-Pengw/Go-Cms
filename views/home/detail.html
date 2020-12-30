@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Go-Cms</title>
+    <link rel="stylesheet" href="/static/css/home-common.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/home-custom.css" />
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/static/css/home-custom-mobile.css" />
+</head>
+
+<body class="no-navbar">
+<div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            <!--done-->
+            <h1>
+                <a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="#">{{$.profile.Nickname}}</a></h1>
+            <h2>{{$.profile.Motto}}</h2></div>
+        <!--end: blogTitle 博客的标题和副标题 -->
+        <div id="navigator">
+            <div class="blogStats">
+                <span id="stats_post_count">随笔 - 396&nbsp;</span>
+                <span id="stats_article_count">文章 - 4&nbsp;</span>
+                <span id="stats-comment_count">评论 - 4851</span>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <div id="post_detail">
+                    <!--done-->
+                    <div id="topics">
+                        <div class="post">
+                            <h1 class="postTitle">
+
+                                <a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/cocowool/p/bye-bye-2020.html">
+                                    <span>2020总结来了，文末有福利</span>
+
+
+
+                                </a>
+
+                            </h1>
+                            <div class="clear"></div>
+                            <div class="postBody">
+
+                                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+                                    <p>还有两周时间，2020年就要落下帷幕了。2020年的确是不平凡的一年，年初的疫情让全国所有人都体验到病毒带来的恐惧，随着疫情被逐步控制，也体会到能够自由流动之可贵，体会到国家对于疫情控制的卓然成效。经过3个月的居家办公返回工作岗位后，浪哥竟发现原来单位的环境如此的美好，能够心无旁骛的抠腚不是最好的状态吗。昨晚一杯浓咖啡让浪哥半夜都没睡好，却想出了可以总结今年的三个词：<strong>变化、成长、合作</strong>。</p>
+                                    <h2 id="变化">变化</h2>
+                                    <p>十四五规划公报全文中提到，2020年我们处于<strong>世界百年未有之大变局</strong>的潮头。大到科技圈，苹果转投ARM发布了自研M1芯片的Mac系列、荣耀也从华为独立出来了。小到浪哥一个默默无名的公号作者，也有许许多多的变化。</p>
+                                    <ul>
+                                        <li>在博客园发表了22篇文章，终于又恢复了推荐到首页的功能。排名可是蹭蹭的下降，感觉和博客园修改了算法有关系。</li>
+                                        <li>佛系经营的公众号订阅用户从年初的161人增加到今天的261人，全年一共做了47次推送，感谢一直关注的各位老铁，打扰了。</li>
+                                        <li>用了几个月的时间，重新整理上线了自己的静态博客站点 <a href="http://www.edulinks.cn/" target="_blank">大江小浪</a>，目前一共有370篇文章，其中2020年发表了41篇文章。</li>
+                                        <li>整理了自己写作发表的流程，形成了固定的写作交付流程 <a href="http://edulinks.cn/2020/06/04/20200604-build-my-writing-devops/" target="_blank">为自己构建写作的敏捷发布流程</a>，感觉写作的动力又有一点点回来了。</li>
+                                    </ul>
+                                    <h2 id="成长">成长</h2>
+                                    <p>当想到这个词的时候，浪哥还有些不好意思，做为职场老地青说<strong>生长</strong>还差不多，要说2020年的成长，那可真的是一个巴掌都能数的过来。为了多少树立一点好学上进的形象，可能也就下面这两个值得说一说。</p>
+                                    <ul>
+                                        <li>
+                                            <p>9月份的时候，参加了腾讯云+社区组织的《技术创作101训练营》，写的文章 <a href="http://edulinks.cn/2020/09/22/20200922-elasticsearch-log-config/" target="_blank">Elasticsearch 日志配置详解</a> 进入到了前 30 名。老师给的评语是：</p>
+                                            <blockquote>
+                                                <p>1）有实际操作，图文并茂，可操作性强</p>
+                                                <p>2）文章有条理，思路清晰</p>
+                                                <p>3）干货多多，可读性强</p>
+                                                <p>4）作者是带着自已对同类文章内容缺点的思考来写的，所以主题和内容的定位较准确。<br>
+                                                    如果内容更丰富一些，就能更能匹配的上标题的“详解”这两个字了。</p>
+                                            </blockquote>
+                                            <p>拿到毕业证和大礼包的时候，还是有些小激动。</p>
+                                        </li>
+                                    </ul>
+                                    <p><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/39469-20201218083312878-524753381.png" alt="" loading="lazy"></p>
+                                    <ul>
+                                        <li>12月份，还有幸被社区助理邀请参加云+社区阅读清单的评委。腾讯云+社区的阅读清单是让大家能够专注的阅读一个领域相关知识点，构建系统的知识架构的绝佳产品，通过先进的算法凝练而成的清单，让大家享受到极致专一的阅读体验，让你在纷杂的世界中，在阅读中获得片刻的宁静。</li>
+                                    </ul>
+                                    <p><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/39469-20201218083328599-115940439.png" alt="" loading="lazy"></p>
+                                    <p>这点小小的成长也给自己明年带来了大大的压力，如何让自己写的东西既能清晰流畅的表达、又能有点深度，如何构建一个系统的、系列的文章，容浪哥明年再成长一点点吧。</p>
+                                    <h2 id="合作">合作</h2>
+                                    <p>想到这个词，是浪哥真的想感谢在云+社区集赞活动中为我点赞的各路朋友圈豪杰，以及闻讯过来助攻的“腾讯技术创作101训练营第一季”的各位大侠，是你们的神助攻让我收获了人生中获赞最多的一条朋友圈。“在家靠父母，在外靠朋友” 古人说的真对呀！</p>
+                                    <p><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/39469-20201218083342534-1253575301.png" alt="" loading="lazy"></p>
+                                    <h2 id="福利来了">福利来了</h2>
+                                    <p>为了感谢各位朋友对小浪的垂爱，我决定将本次集赞活动获得的奖品 <strong>100个Q币</strong> 拿出来送给大家，活动的规则非常简单，大家在公众号的后台回复 <strong>1224</strong> 即可参与，本次Q币的电子兑换码会在12月24日晚上20:00在参与活动的朋友中随机送出，本次抽奖采用了“抽奖小助手”并开启了助力功能，如果邀请朋友助力，将会增加中奖几率，祝大家好运～～</p>
+                                    <p><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/39469-20201218083354783-1163616516.png" alt="" loading="lazy"></p>
+
+                                </div>
+                                <div id="MySignature"></div>
+                                <div class="clear"></div>
+                                <div id="blog_post_info_block"><div id="BlogPostCategory">
+                                        分类:
+                                        <a href="https://www.cnblogs.com/cocowool/category/154343.html" target="_blank">IT Gossip</a></div>
+
+
+                                    <div id="blog_post_info">
+                                        <div id="green_channel">
+                                            <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(14153131,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+                                            <a id="green_channel_follow" onclick="follow(&#39;6151420b-63cf-dd11-9e4d-001cf0cd104b&#39;);" href="javascript:void(0);">关注我</a>
+                                            <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+                                            <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/icon_weibo_24.png" alt=""></a>
+                                            <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/wechat.png" alt=""></a>
+                                        </div>
+                                        <div id="author_profile">
+                                            <div id="author_profile_info" class="author_profile_info">
+                                                <a href="https://home.cnblogs.com/u/cocowool/" target="_blank"><img src="./2020总结来了，文末有福利 - Cocowool - 博客园_files/u39469.jpg" class="author_avatar" alt=""></a>
+                                                <div id="author_profile_detail" class="author_profile_info">
+                                                    <a href="https://home.cnblogs.com/u/cocowool/">Cocowool</a><br>
+                                                    <a href="https://home.cnblogs.com/u/cocowool/followees/">关注 - 6</a><br>
+                                                    <a href="https://home.cnblogs.com/u/cocowool/followers/">粉丝 - 315</a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div id="author_profile_honor">推荐博客</div>
+                                            <div id="author_profile_follow">
+                                                <a href="javascript:void(0);" onclick="follow(&#39;6151420b-63cf-dd11-9e4d-001cf0cd104b&#39;);return false;">+加关注</a>
+                                            </div>
+                                        </div>
+                                        <div id="div_digg">
+                                            <div class="diggit" onclick="votePost(14153131,&#39;Digg&#39;)">
+                                                <span class="diggnum" id="digg_count">0</span>
+                                            </div>
+                                            <div class="buryit" onclick="votePost(14153131,&#39;Bury&#39;)">
+                                                <span class="burynum" id="bury_count">0</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="diggword" id="digg_tips">
+                                            </div>
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            currentDiggType = 0;
+                                        </script></div>
+                                    <div class="clear"></div>
+                                    <div id="post_next_prev">
+
+                                        <a href="https://www.cnblogs.com/cocowool/p/end-of-centos.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/cocowool/p/end-of-centos.html" title="发布于 2020-12-10 13:04">CentOS 用户请关注，你期待的 CentOS Linux 9 再也不会来了</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="postDesc">posted @
+                                <span id="post-date">2020-12-18 08:34</span>&nbsp;
+                                <a href="https://www.cnblogs.com/cocowool/">Cocowool</a>&nbsp;
+                                阅读(<span id="post_view_count">73</span>)&nbsp;
+                                评论(<span id="post_comment_count">0</span>)&nbsp;
+                                <a href="https://i.cnblogs.com/EditPosts.aspx?postid=14153131" rel="nofollow">编辑</a>&nbsp;
+                                <a href="javascript:void(0)" onclick="AddToWz(14153131);return false;">收藏</a></div>
+                        </div>
+
+
+                    </div><!--end: topics 文章、评论容器-->
+                </div>
+            </div>
+        </div>
+        <!--end: mainContent 主体内容容器-->
+        <div id="sideBar">
+            <div id="sideBarMain">
+                <div id="sidebar_news" class="newsItem">
+                    <!--done-->
+                    <h3 class="catListTitle">公告</h3>
+                    <div id="blog-news">
+                        <img src="../../static/images/bg.png">
+                    </div>
+                    <div id="sidebar_c3"></div>
+                    <br />
+                    <!-- 最新随笔 -->
+                    <div id="sidebar_recentposts" class="sidebar-block">
+                        <div class="catListEssay">
+                            <h3 class="catListTitle">最新随笔</h3>
+                            <ul>
+                                {{range $k, $v := .topTenArt}}
+                                    <li>
+                                        <a href="https://www.cnblogs.com/cocowool/p/commands-to-domain.html">{{$k}}. {{$v.Title}}</a></li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 我的标签 -->
+                    <!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+                    <div id="sidebar_categories">
+                        <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+                            <h3 class="catListTitle">随笔分类
+                                <span style="font-size:11px;font-weight:normal">({{.articleList|len}})</span></h3>
+                            <ul>
+                                {{range .tag}}
+                                    <li data-category-list-item-visible="true" style="display: block">
+                                        <a href="https://www.cnblogs.com/cocowool/category/1053765.html" rel="" target="">{{.Name}}({{.Total}})</a></li>
+                                {{end}}
+                                <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
+                            </ul>
+                        </div>
+                        <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                            <h3 class="catListTitle">随笔档案
+                                <span style="font-size:11px;font-weight:normal">(396)</span></h3>
+                            <ul>
+                                <li data-category-list-item-visible="true" style="display: block">
+                                    <a href="https://www.cnblogs.com/cocowool/archive/2019/06.html" rel="" target="">2019年6月(1)</a></li>
+                                <li data-category-list-item-visible="true" style="display: block">
+                                    <a href="https://www.cnblogs.com/cocowool/archive/2019/04.html" rel="" target="">2019年4月(3)</a></li>
+                                <li data-category-list-item-visible="true" style="display: block">
+                                    <a href="https://www.cnblogs.com/cocowool/archive/2019/03.html" rel="" target="">2019年3月(1)</a></li>
+                                <li>
+                                    <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
+                            </ul>
+                        </div>
+                        <div id="sidebar_links191507" class="catList sidebar-block">
+                            <h3 class="catListTitle">友情链接</h3>
+                            <ul>
+                                {{range .links}}
+                                    <li data-category-list-item-visible="true" style="display: block">
+                                        <a href="{{.Url}}" rel="nofollow noopener noreferrer" target="_blank">{{.Name}}</a></li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 阅读排行榜 -->
+                    <div id="sidebar_topviewedposts" class="sidebar-block">
+                        <div class="catListView">
+                            <h3 class="catListTitle">阅读排行榜</h3>
+                            <div id="TopViewPostsBlock">
+                                <ul style="word-break:break-all">
+                                    {{range .topTenViewArt}}
+                                        <li>
+                                            <a href="https://www.cnblogs.com/cocowool/archive/2009/04/22/1441291.html">{{.Id}}. {{.Title}}({{.ReadNum}})</a></li>
+                                    {{end}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 推荐排行榜 --></div>
+            </div>
+        </div>
+        <!--end: sideBarMain --></div>
+    <!--end: sideBar 侧边栏容器 -->
+    <div class="clear"></div>
+</div>
+<!--end: main -->
+<div class="clear"></div>
+<div id="footer">
+    <!--done-->Copyright &copy; 2020 Cocowool
+    <br />
+    <span id="poweredby">Powered by .NET 5.0.1-servicing.20575.16 on Kubernetes</span></div>
+<!--end: footer -->
+</body>
+</html>

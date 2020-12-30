@@ -23,7 +23,7 @@ func init() {
 
 	// 注册model
 	//orm.RegisterModelWithPrefix("tbl_", new(models.User));
-	orm.RegisterModelWithPrefix("tbl_", new(models.Admin), new(models.Profile), new(models.Article), new(models.Links), new(models.ArticleTag))
+	orm.RegisterModelWithPrefix("tbl_", new(models.Admin), new(models.Profile), new(models.Article), new(models.Links), new(models.ArticleTag),new(models.ArticleReadNum))
 	// 注册驱动
 	orm.RegisterDriver(mysqlDriver, orm.DRMySQL)
 	// 注册db

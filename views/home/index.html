@@ -69,8 +69,10 @@
                         <div class="catListEssay">
                             <h3 class="catListTitle">最新随笔</h3>
                             <ul>
-                                <li>
-                                    <a href="https://www.cnblogs.com/cocowool/p/commands-to-domain.html">10.与域名相关的几个命令</a></li>
+                                {{range $k, $v := .topTenArt}}
+                                    <li>
+                                        <a href="https://www.cnblogs.com/cocowool/p/commands-to-domain.html">{{$k}}. {{$v.Title}}</a></li>
+                                {{end}}
                             </ul>
                         </div>
                     </div>
@@ -79,7 +81,7 @@
                     <div id="sidebar_categories">
                         <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
                             <h3 class="catListTitle">随笔分类
-                                <span style="font-size:11px;font-weight:normal">({{.tag|len}})</span></h3>
+                                <span style="font-size:11px;font-weight:normal">({{.articleList|len}})</span></h3>
                             <ul>
                                 {{range .tag}}
                                     <li data-category-list-item-visible="true" style="display: block">
@@ -118,16 +120,10 @@
                             <h3 class="catListTitle">阅读排行榜</h3>
                             <div id="TopViewPostsBlock">
                                 <ul style="word-break:break-all">
-                                    <li>
-                                        <a href="https://www.cnblogs.com/cocowool/archive/2009/04/22/1441291.html">1. Crontab的格式(253767)</a></li>
-                                    <li>
-                                        <a href="https://www.cnblogs.com/cocowool/archive/2012/01/17/macvpn.html">2. Mac下连接VPN的设置(80776)</a></li>
-                                    <li>
-                                        <a href="https://www.cnblogs.com/cocowool/archive/2013/03/09/2952003.html">3. Yeoman学习与实践笔记(67322)</a></li>
-                                    <li>
-                                        <a href="https://www.cnblogs.com/cocowool/archive/2008/11/10/1330932.html">4. Ubuntu下使用SVN(63755)</a></li>
-                                    <li>
-                                        <a href="https://www.cnblogs.com/cocowool/archive/2012/04/01/2428861.html">5. WebLogic中的一些基本概念(58345)</a></li>
+                                    {{range .topTenViewArt}}
+                                        <li>
+                                            <a href="https://www.cnblogs.com/cocowool/archive/2009/04/22/1441291.html">{{.Id}}. {{.Title}}({{.ReadNum}})</a></li>
+                                    {{end}}
                                 </ul>
                             </div>
                         </div>
