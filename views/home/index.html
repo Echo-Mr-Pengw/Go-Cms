@@ -79,13 +79,12 @@
                     <div id="sidebar_categories">
                         <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
                             <h3 class="catListTitle">随笔分类
-                                <span style="font-size:11px;font-weight:normal">(425)</span></h3>
+                                <span style="font-size:11px;font-weight:normal">({{.tag|len}})</span></h3>
                             <ul>
-                                <li data-category-list-item-visible="true" style="display: block">
-                                    <a href="https://www.cnblogs.com/cocowool/category/1053765.html" rel="" target="">Cloud(34)</a></li>
-                                <li data-category-list-item-visible="false" style="display: none">
-                                    <a href="https://www.cnblogs.com/cocowool/category/1243371.html" rel="" target="">软考(10)</a></li>
-                                <li>
+                                {{range .tag}}
+                                    <li data-category-list-item-visible="true" style="display: block">
+                                        <a href="https://www.cnblogs.com/cocowool/category/1053765.html" rel="" target="">{{.Name}}({{.Total}})</a></li>
+                                {{end}}
                                     <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
                             </ul>
                         </div>
@@ -106,10 +105,10 @@
                         <div id="sidebar_links191507" class="catList sidebar-block">
                             <h3 class="catListTitle">友情链接</h3>
                             <ul>
-                                <li data-category-list-item-visible="true" style="display: block">
-                                    <a href="http://t.cn/R5cmJrI" rel="nofollow noopener noreferrer" target="_blank">我的SAE邀请链接</a></li>
-                                <li data-category-list-item-visible="true" style="display: block">
-                                    <a href="http://www.edulinks.cn/" rel="nofollow noopener noreferrer" target="_blank">大江小浪</a></li>
+                                {{range .links}}
+                                    <li data-category-list-item-visible="true" style="display: block">
+                                        <a href="{{.Url}}" rel="nofollow noopener noreferrer" target="_blank">{{.Name}}</a></li>
+                                {{end}}
                             </ul>
                         </div>
                     </div>
