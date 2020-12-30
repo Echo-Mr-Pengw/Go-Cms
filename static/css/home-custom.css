@@ -1,0 +1,138 @@
+/*-- CSS Reset 部分 --*/
+
+
+/*-- 全局样式部分 --*/
+*,html,body { margin:0px auto; }
+html { position:relative; }
+body {
+    position: relative;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, "Microsoft YaHei", Arial, sans-serif;
+    line-height: 1.5em;
+    font-size:14px;
+}
+.clear { clear: both; }
+div { position:relative; }
+ul { padding:0px; }
+li { list-style-type: none; }
+a { text-decoration: none; color:#ff3333;  }
+a:hover { color:#000; padding-bottom:3px; box-shadow:rgb(240,56,56) 0px -2px 0px inset; transition: 0.3s; }
+a:visited {  }
+h1 { line-height: 150%; }
+
+/*-- 公共样式 --*/
+body { border-top:3px solid #000; }
+blockquote {
+    border-left: 5px solid #657b83;
+    background: #f6f6f6
+}
+
+#header { }
+#blogTitle { text-align: center; }
+#blogTitle h1 { padding:1em 0; }
+#blogTitle h1 a { display:inline-block; margin:10px 0; background-color:rgb(240,56,56); color:#fff; line-height: 3rem;
+    font-size:24px; padding:0 2em; }
+#blogTitle h2 { font-size:1.2em; color:#666; }
+
+#navList { display:none; }
+#blog_stats { text-align: center; color:rgb(240,56,56); font-size: 14px; line-height: 3em;}
+
+#main { display:block; border-top:1px solid rgb(116,156,156); padding-top:2em; }
+.sidebar-block { margin:0 0 10px 0; }
+.newsItem > h3 { display:none; }
+.catListTitle { font-size:16px; border-right:2px solid rgb(240,56,56); }
+#sidebar_postcategory ul { }
+.recent_comment_author { text-align: right; }
+
+.forFlow { }
+/*-- 博客列表页样式 --*/
+.day { margin-bottom: 2em; padding:3em 0 1em; }
+.day:first-child { padding-top:0; }
+.day:not(:first-child):before {
+    content:" "; width:150px; height:1px; background-color: rgb(224,56,56); position: absolute; top:0px; left:50%; margin-left: -75px;
+}
+.dayTitle { display:none; }
+.postTitle { margin-bottom:1em; line-height: 1.5em; padding-top:1em;/*border-left:2px solid rgb(240,56,56); padding-left: 0.5em;*/   }
+#post_detail .postTitle a { font-size:1em; }
+.cnblogs-post-body a, .c_b_p_desc a { margin:0 0.5em; color:#ff3333; }
+#BlogPostCategory { padding:0; }
+#BlogPostCategory, #BlogPostCategory a, #EntryTag, #EntryTag a { color:rgb(158,158,158); }
+#BlogPostCategory a, #EntryTag a { margin:0 0.3em; }
+
+#comment_form_container {
+    border-top:1px solid rgb(0,0,0,0.13);
+}
+.commentbox_main { margin:5px 0 0 0; }
+.commentbox_title { padding-bottom:5px;width:auto; }
+.commentbox_title_right { float:left; }
+.comment_textarea { margin-top:5px; }
+.comment_actions a { padding:0; padding-bottom:3px; margin-right:10px; }
+#comment_nav a { padding:0; margin-left:10px; padding-bottom:3px; }
+.comment_vote a { padding-left:0px; margin-left:10px; }
+
+.cnblogs-markdown code {
+    font-family: Menlo, Monaco, Andale Mono, lucida console, Courier New, monospace !important;
+    font-size: 12px !important;
+    line-height: 20px;
+    background-color: #000 !important;
+    color:#fff;
+    padding: 0 5px !important;
+    border-radius: 3px !important;
+    line-height: 1.8;
+    margin: 1px 5px;
+    vertical-align: middle;
+    display: inline-block
+}
+
+.cnblogs-markdown pre code {
+    display: block;
+    margin: auto;
+    vertical-align: auto;
+    height: auto;
+    line-height: normal
+}
+
+.cnblogs-markdown .hljs {
+    font-family: Menlo, Monaco, Andale Mono, lucida console, Courier New, monospace !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    padding: 5px 5px 5px 15px !important;
+    background:#000;
+    color:#fff;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-built_in, .hljs-name, .hljs-tag {
+    color:#ffff00;
+}
+
+.cnblogs-markdown pre {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+#ad_t2, #ad_c1, #under_post_news, #ad_c2, #under_post_kb { display:none; }
+
+.entrylistItem { padding:1em 0; margin-bottom:1em; }
+.postSeparator { margin-bottom:3em; }
+/*.postSeparator:not(:first-child):before {
+  content:" "; width:150px; height:1px; background-color: rgb(224,56,56); position: absolute; top:0px; left:50%; margin-left: -75px;
+}
+*/
+.entrylistPosttitle { font-size: 1.5em; line-height:2em; }
+
+#footer { text-align:center; padding:10px 0 10px;  }
+
+/*-- Desktop 样式 --*/
+@media screen and (min-width:1024px) {
+    #home { margin:0 auto; min-width:980px; max-width:1150px; background-color:#fff; }
+    #mainContent { float:left; width:75%; max-width: 900px; }
+    #sideBar { float:right; width:25%; max-width:240px; }
+    .postTitle a { font-size:1.5em; color:#000; }
+}
+
+@media screen and (max-width:1024px) {
+    #home { margin:0 1em; background-color:#fff; }
+    #main { display:block; border-top:1px solid rgb(116,156,156); padding-top:2em; }
+    #mainContent { width:auto; }
+    #sideBar { display: none; }
+    .postTitle a { font-size:1.5em; color:#000; }
+}

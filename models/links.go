@@ -56,3 +56,10 @@ func AddLinks(links *Links) (int64) {
 	}
 	return addRow
 }
+
+// 获取正常显示的友情链接
+func GetNormalLinks() (links []Links, num int64) {
+	links = []Links{}
+	num, _ = orm.NewOrm().QueryTable(new(Links)).Filter("status", 1).OrderBy("-id").All(&links)
+	return
+}

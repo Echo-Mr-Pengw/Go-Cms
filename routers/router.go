@@ -2,6 +2,7 @@ package routers
 
 import (
 	"Go-Cms/controllers/admin"
+	"Go-Cms/controllers/home"
 	"github.com/astaxie/beego"
 )
 
@@ -43,4 +44,8 @@ func init() {
     beego.Router("article/list", &admin.ArticleController{}, "get:List")
     beego.Router("article/add", &admin.ArticleController{}, "get,post:Add")
     beego.Router("article/edit", &admin.ArticleController{}, "get,post:Edit")
+
+    // 前台首页
+    beego.Router("home/", &home.IndexController{}, "get:Index")
+
 }
