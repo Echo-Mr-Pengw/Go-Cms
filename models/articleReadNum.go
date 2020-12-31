@@ -2,6 +2,7 @@
 package models
 
 import (
+	"fmt"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -20,14 +21,10 @@ func (u *ArticleReadNum) TableEngine() string {
 }
 
 // 新增/更新浏览数
-func UpdateReadNum(tagId string) (row int64) {
-	sql := "insert into tbl_article_read_num(tag_id,read_num) values(?,1) on duplicate key update read_num=read_num+1"
-	res, err := orm.NewOrm().Raw(sql, tagId).Exec()
-	if err != nil {
-		row = 0
-	}
-	row, _ = res.RowsAffected()
-	return row
+func UpdateReadNum(articleId string) {
+	sql := "insert into tbl_article_read_num(article_id,read_num) values(?,1) on duplicate key update read_num=read_num+1"
+	_, err := orm.NewOrm().Raw(sql, articleId).Exec()
+	fmt.Println(111, err)
 }
 
 // 获取前10阅读数最高的文章id

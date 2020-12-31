@@ -31,10 +31,24 @@ func GetArticleList() (art []Article, num int64) {
 }
 
 // 获取正常的文章
-func GetNormalArticleList() (art []Article, num int64) {
-	art = []Article{}
-	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("status", 1).OrderBy("-id").All(&art)
-	return
+//func GetNormalArticleList() (art []Article, num int64) {
+//	art = []Article{}
+//	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("status", 1).OrderBy("-id").All(&art)
+//	return
+//}
+
+// 连表查询正常显示的文章
+func GetNormalArticleList(startArticleId, endArticleId string) ([]orm.Params) {
+	var list []orm.Params
+	sql := "SELECT  a.id,a.title,a.abstract,a.author,a.create_time, ifnull(b.read_num, 0) as read_num FROM tbl_article as a LEFT JOIN tbl_article_read_num as b ON a.id = b.article_id WHERE a.id>=? AND a.id<=?"
+	orm.NewOrm().Raw(sql, startArticleId, endArticleId).Values(&list)
+	return list
+}
+
+// 获取正常文章显示文章的总数量
+func GetNormalArticleNum() (int64){
+	total, _ := orm.NewOrm().QueryTable(new(Article)).Filter("status", 1).Count()
+	return total
 }
 
 // 添加文章
@@ -82,4 +96,3 @@ func GetTopTenNormalArticleByArtId(articleId []uint) (art []Article, num int64) 
 	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("id__in", articleId).All(&art, "id", "title")
 	return
 }
-

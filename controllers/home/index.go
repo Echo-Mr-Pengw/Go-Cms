@@ -2,7 +2,6 @@ package home
 
 import (
 	"Go-Cms/models"
-	"fmt"
 	"github.com/astaxie/beego"
 )
 
@@ -19,14 +18,30 @@ type topTenArticle struct {
 
 func (c *IndexController) Index() {
 
+	startPage := "1"
+	endPage   := "10"
+
+	c.Data["total"]         = c.getTotalArticleNum()     // 文章总数
 	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
 	c.Data["topTenArt"]     = c.getTopTenArt()           // 最近发布的前10的文章
 	c.Data["tag"]           = c.getTagList()             // 标签列表
 	c.Data["profile"]       = c.getProfile()             // 获取个人简介
-	c.Data["articleList"]   = c.getArtList()             // 文章列表
+	c.Data["articleList"]   = c.getArtList(startPage, endPage)             // 文章列表
 	c.Data["topTenViewArt"] = c.getTopTenViewsArticle()  // 阅读量排名前10的文章
-fmt.Println(c.getTopTenViewsArticle())
-	c.TplName = "home/index.html"
+
+
+	c.Layout  = "home/index.html"
+	c.TplName = "home/list.html"
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["header"] = "home/header.html"
+	c.LayoutSections["footer"] = "home/footer.html"
+	c.LayoutSections["left"]   = "home/left.html"
+}
+
+// 正常显示的文章总数
+func (c *IndexController) getTotalArticleNum() (int64){
+	total := models.GetNormalArticleNum()
+	return total
 }
 
 // 获取个人简介
@@ -55,8 +70,8 @@ func (c *IndexController) getTagList() (tag []models.ArticleTag) {
 }
 
 // 文章列表
-func (c *IndexController) getArtList() (articleList []models.Article) {
-	articleList,_ = models.GetNormalArticleList()
+func (c *IndexController) getArtList(startPage, endPage string) (articleList interface{}) {
+	articleList = models.GetNormalArticleList(startPage, endPage)
 	return
 }
 
@@ -104,13 +119,27 @@ func (c *IndexController) getTopTenViewsArticle() ([]topTenArticle) {
 
 func (c *IndexController) Detail() {
 	id := c.Ctx.Input.Param(":id")
-	fmt.Println(id, 12)
-	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
-	c.Data["topTenArt"]     = c.getTopTenArt()           // 最近发布的前10的文章
-	c.Data["tag"]           = c.getTagList()             // 标签列表
-	c.Data["profile"]       = c.getProfile()             // 获取个人简介
-	c.Data["articleList"]   = c.getOneArticleById(id)             // 文章列表
-	c.Data["topTenViewArt"] = c.getTopTenViewsArticle()  // 阅读量排名前10的文章
-	//fmt.Println(c.getOneArticleById(id), 1212)
-	c.TplName = "home/detail.html"
+
+	c.Data["links"]          = c.getLinks()               // 正常状态的友情链接
+	c.Data["topTenArt"]      = c.getTopTenArt()           // 最近发布的前10的文章
+	c.Data["tag"]            = c.getTagList()             // 标签列表
+	c.Data["profile"]        = c.getProfile()             // 获取个人简介
+	//c.Data["articleList"]    = c.getArtList()             // 正常显示的文章数量
+	c.Data["articleContent"] = c.getOneArticleById(id)    // 当前文章id的内容
+	c.Data["topTenViewArt"]  = c.getTopTenViewsArticle()  // 阅读量排名前10的文章
+
+	// 更新当前文章的阅读量
+	models.UpdateReadNum(id)
+
+	c.Layout  = "home/detail.html"
+	c.TplName = "home/content.html"
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["header"] = "home/header.html"
+	c.LayoutSections["footer"] = "home/footer.html"
+	c.LayoutSections["left"]   = "home/left.html"
+}
+
+// 分页
+func (c *IndexController) Paging () {
+
 }

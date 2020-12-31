@@ -1,0 +1,81 @@
+<!--end: mainContent 主体内容容器-->
+<div id="sideBar">
+    <div id="sideBarMain">
+        <div id="sidebar_news" class="newsItem">
+            <!--done-->
+            <h3 class="catListTitle">公告</h3>
+            <div id="blog-news">
+                <img src="../../static/images/bg.png">
+            </div>
+            <div id="sidebar_c3"></div>
+            <br />
+            <!-- 最新随笔 -->
+            <div id="sidebar_recentposts" class="sidebar-block">
+                <div class="catListEssay">
+                    <h3 class="catListTitle">最新随笔</h3>
+                    <ul>
+                        {{range $k, $v := .topTenArt}}
+                            <li>
+                                <a href="/detail/{{$v.Id}}">{{$k}}. {{$v.Title}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+            <!-- 我的标签 -->
+            <!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+            <div id="sidebar_categories">
+                <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+                    <h3 class="catListTitle">随笔分类
+                        <span style="font-size:11px;font-weight:normal">121</span></h3>
+                    <ul>
+                        {{range .tag}}
+                            <li data-category-list-item-visible="true" style="display: block">
+                                <a href="https://www.cnblogs.com/cocowool/category/1053765.html" rel="" target="">{{.Name}}({{.Total}})</a></li>
+                        {{end}}
+                        <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
+                    </ul>
+                </div>
+                <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                    <h3 class="catListTitle">随笔档案
+                        <span style="font-size:11px;font-weight:normal">(396)</span></h3>
+                    <ul>
+                        <li data-category-list-item-visible="true" style="display: block">
+                            <a href="https://www.cnblogs.com/cocowool/archive/2019/06.html" rel="" target="">2019年6月(1)</a></li>
+                        <li data-category-list-item-visible="true" style="display: block">
+                            <a href="https://www.cnblogs.com/cocowool/archive/2019/04.html" rel="" target="">2019年4月(3)</a></li>
+                        <li data-category-list-item-visible="true" style="display: block">
+                            <a href="https://www.cnblogs.com/cocowool/archive/2019/03.html" rel="" target="">2019年3月(1)</a></li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
+                    </ul>
+                </div>
+                <div id="sidebar_links191507" class="catList sidebar-block">
+                    <h3 class="catListTitle">友情链接</h3>
+                    <ul>
+                        {{range .links}}
+                            <li data-category-list-item-visible="true" style="display: block">
+                                <a href="{{.Url}}" rel="nofollow noopener noreferrer" target="_blank">{{.Name}}</a></li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+            <!-- 阅读排行榜 -->
+            <div id="sidebar_topviewedposts" class="sidebar-block">
+                <div class="catListView">
+                    <h3 class="catListTitle">阅读排行榜</h3>
+                    <div id="TopViewPostsBlock">
+                        <ul style="word-break:break-all">
+                            {{range .topTenViewArt}}
+                                <li>
+                                    <a href="/detail/{{.Id}}">{{.Id}}. {{.Title}}({{.ReadNum}})</a></li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 推荐排行榜 --></div>
+    </div>
+</div>
+<!--end: sideBarMain --></div>
+<!--end: sideBar 侧边栏容器 -->
+<div class="clear"></div>

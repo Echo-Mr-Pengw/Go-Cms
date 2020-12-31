@@ -1,0 +1,33 @@
+<div class="forFlow">
+    {{range $v := .articleList}}
+        <div class="day">
+            <div class="postTitle">
+                <a class="postTitle2 vertical-middle" target="_blank" href="/detail/{{$v.id}}">
+                    <span>{{$v.title}}</span></a>
+            </div>
+            <div class="postCon">
+                <div class="c_b_p_desc">摘要：{{$v.abstract}}
+                    <a href="/detail/{{$v.id}}" target="_blank" class="c_b_p_desc_readmore">阅读全文</a></div>
+            </div>
+            <div class="clear"></div>
+            <div class="postDesc">posted @ {{$v.create_time}} {{$v.author}}
+                <span data-post-id="13871469" class="post-view-count">阅读({{$v.read_num}})</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    {{end}}
+    <!--分页-->
+    <div class="topicListFooter">
+        <div id="nav_next_page">
+            <a href="/home/page">
+                下一页
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var total = {{.total}}
+    $.post("/home/page")
+</script>

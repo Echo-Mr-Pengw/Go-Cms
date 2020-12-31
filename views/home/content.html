@@ -1,0 +1,29 @@
+<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+
+                <a id="cb_post_title_url" class="postTitle2 vertical-middle" href="/detail/{{$.articleContent.Id}}">
+                    <span>{{$.articleContent.Title}}</span>
+                </a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                {{$.articleContent.Content}}
+                <div id="MySignature"></div>
+                <div class="clear"></div>
+                <div class="clear"></div>
+                <div id="post_next_prev">
+                    <a href="https://www.cnblogs.com/cocowool/p/end-of-centos.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/cocowool/p/end-of-centos.html" title="发布于 2020-12-10 13:04">CentOS 用户请关注，你期待的 CentOS Linux 9 再也不会来了</a>
+                </div>
+            </div>
+        </div>
+        <div class="postDesc">posted @
+            <span id="post-date">{{$.articleContent.CreateTime}}</span>&nbsp;
+            <a href="/home">{{$.articleContent.Author}}</a>&nbsp;
+            阅读(<span id="post_view_count"></span>)&nbsp;
+        </div>
+    </div><!--end: topics 文章、评论容器-->
+</div>
