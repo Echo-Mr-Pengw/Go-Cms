@@ -20,7 +20,12 @@ func (c *ProfileController) List() {
 	c.Data["statusMap"]   = statusMap
 	c.Data["profileList"] = profileList
 
-	c.TplName = "admin/profile/list.html"
+	c.Layout  = "admin/profile/list.html"
+	c.TplName = "admin/header.html"
+
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["nav"]    = "admin/nav.html"
+	c.LayoutSections["footer"] = "admin/footer.html"
 }
 
 func (c *ProfileController) Add() {
@@ -66,7 +71,9 @@ func (c *ProfileController) Add() {
 	}
 
 	c.Data["statusMap"]   = statusMap
-	c.TplName = "admin/profile/add.html"
+
+	c.Layout  = "admin/profile/add.html"
+	c.TplName = "admin/header.html"
 }
 
 func (c *ProfileController) Edit() {

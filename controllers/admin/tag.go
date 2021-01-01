@@ -11,7 +11,13 @@ func (c *TagController) List() {
 	tagList, _ := models.GetTagsList()
 	c.Data["tagList"]   = tagList
 	c.Data["statusMap"] = statusMap
-	c.TplName = "admin/tag/list.html"
+
+	c.Layout  = "admin/tag/list.html"
+	c.TplName = "admin/header.html"
+
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["nav"]    = "admin/nav.html"
+	c.LayoutSections["footer"] = "admin/footer.html"
 }
 
 func (c *TagController) Add() {
@@ -30,7 +36,9 @@ func (c *TagController) Add() {
 	}
 
 	c.Data["statusMap"] = statusMap
-	c.TplName = "admin/tag/add.html"
+
+	c.Layout  = "admin/tag/add.html"
+	c.TplName = "admin/header.html"
 }
 
 func (c *TagController) Edit() {
@@ -52,6 +60,8 @@ func (c *TagController) Edit() {
 
 	c.Data["tagInfo"]   = tagInfo
 	c.Data["statusMap"] = statusMap
-	c.TplName = "admin/tag/edit.html"
+
+	c.Layout  = "admin/tag/edit.html"
+	c.TplName = "admin/header.html"
 
 }

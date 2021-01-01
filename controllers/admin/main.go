@@ -5,5 +5,6 @@ type MainController struct {
 }
 
 func (c *MainController) Index() {
-	c.TplName = "admin/main.html"
+	c.Layout = "admin/main.html"
+	c.TplName = "admin/header.html"
 }

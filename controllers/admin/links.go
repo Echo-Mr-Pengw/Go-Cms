@@ -15,7 +15,12 @@ func (c *LinksController) List() {
 	c.Data["linksList"] = list
 	c.Data["statusMap"] = statusMap
 
-	c.TplName  = "admin/links/list.html"
+	c.Layout  = "admin/links/list.html"
+	c.TplName = "admin/header.html"
+
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["nav"]    = "admin/nav.html"
+	c.LayoutSections["footer"] = "admin/footer.html"
 }
 
 func (c *LinksController) Add() {
@@ -34,7 +39,8 @@ func (c *LinksController) Add() {
 	}
 
 	c.Data["statusMap"] = statusMap
-	c.TplName  = "admin/links/add.html"
+	c.Layout   = "admin/links/add.html"
+	c.TplName  = "admin/header.html"
 }
 
 func (c *LinksController) Edit() {
@@ -57,5 +63,6 @@ func (c *LinksController) Edit() {
 
 	c.Data["info"] = info
 	c.Data["statusMap"] = statusMap
-	c.TplName  = "admin/links/edit.html"
+	c.Layout   = "admin/links/edit.html"
+	c.TplName  = "admin/header.html"
 }

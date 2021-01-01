@@ -18,7 +18,8 @@ type resp struct {
 
 // 后台首页 登录页面
 func (c *IndexController) Index() {
-	c.TplName = "admin/index.html"
+	c.Layout = "admin/index.html"
+	c.TplName = "admin/header.html"
 }
 
 // 登录

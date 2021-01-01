@@ -26,7 +26,13 @@ func (c *ArticleController) List() {
 	c.Data["tagMap"]      = tagMap
 	c.Data["articleList"] = articleList
 	c.Data["statusMap"]   = statusMap
-	c.TplName = "admin/article/list.html"
+
+	c.Layout  = "admin/article/list.html"
+	c.TplName = "admin/header.html"
+
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["nav"]    = "admin/nav.html"
+	c.LayoutSections["footer"] = "admin/footer.html"
 }
 
 func (c *ArticleController) Add() {
@@ -58,7 +64,9 @@ func (c *ArticleController) Add() {
 
 	c.Data["tagList"]   = tagList
 	c.Data["statusMap"] = statusMap
-	c.TplName = "admin/article/add.html"
+
+	c.Layout  = "admin/article/add.html"
+	c.TplName = "admin/header.html"
 }
 
 func (c *ArticleController) Edit() {
@@ -101,5 +109,7 @@ func (c *ArticleController) Edit() {
 	c.Data["tagList"]   = tagList
 	c.Data["artList"]   = artList
 	c.Data["statusMap"] = statusMap
-	c.TplName = "admin/article/edit.html"
+
+	c.Layout  = "admin/article/edit.html"
+	c.TplName = "admin/header.html"
 }

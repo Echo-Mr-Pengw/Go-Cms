@@ -17,7 +17,13 @@ func (c *AdminController) List() {
 	c.Data["statusMap"]      = statusMap
 	c.Data["adminLevelMap"]  = adminLevel
 	c.Data["adminList"]      = adminList
-	c.TplName = "admin/admin/list.html"
+
+	c.Layout  = "admin/admin/list.html"
+	c.TplName = "admin/header.html"
+
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["nav"]    = "admin/nav.html"
+	c.LayoutSections["footer"] = "admin/footer.html"
 }
 
 func (c *AdminController) Add() {
@@ -40,7 +46,8 @@ func (c *AdminController) Add() {
 	c.Data["statusMap"]      = statusMap
 	c.Data["adminLevelMap"]  = adminLevel
 
-	c.TplName  = "admin/admin/add.html"
+	c.Layout   = "admin/admin/add.html"
+	c.TplName  = "admin/header.html"
 }
 
 func (c *AdminController) Edit() {
@@ -69,5 +76,6 @@ func (c *AdminController) Edit() {
 	c.Data["statusMap"]     = statusMap
 	c.Data["adminLevelMap"] = adminLevel
 
-	c.TplName  = "admin/admin/edit.html"
+	c.Layout   = "admin/admin/edit.html"
+	c.TplName  = "admin/header.html"
 }
