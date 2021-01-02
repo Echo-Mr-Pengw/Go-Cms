@@ -3,6 +3,11 @@ package home
 import (
 	"Go-Cms/models"
 	"github.com/astaxie/beego"
+	"strconv"
+)
+
+const (
+	pageNum = 10   // 每页的页数
 )
 
 type IndexController struct {
@@ -18,8 +23,8 @@ type topTenArticle struct {
 
 func (c *IndexController) Index() {
 
-	startPage := "1"
-	endPage   := "10"
+	startPage := 0
+	endPage   := 10
 
 	c.Data["total"]         = c.getTotalArticleNum()     // 文章总数
 	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
@@ -70,7 +75,7 @@ func (c *IndexController) getTagList() (tag []models.ArticleTag) {
 }
 
 // 文章列表
-func (c *IndexController) getArtList(startPage, endPage string) (articleList interface{}) {
+func (c *IndexController) getArtList(startPage, endPage int) (articleList interface{}) {
 	articleList = models.GetNormalArticleList(startPage, endPage)
 	return
 }
@@ -142,4 +147,15 @@ func (c *IndexController) Detail() {
 // 分页
 func (c *IndexController) Paging () {
 
+	id, _ := strconv.Atoi(c.GetString("id", "2"))
+	startPage := (id - 1) * pageNum
+	endPage   := id * pageNum
+
+	c.Data["json"] = c.getArtList(startPage, endPage)             // 文章列表
+	c.ServeJSON()
+}
+
+// 文章标签分类
+func (c *IndexController) Category() {
+	return
 }

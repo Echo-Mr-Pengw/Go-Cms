@@ -48,8 +48,10 @@ func init() {
     // 前台首页
     beego.Router("home/", &home.IndexController{}, "get:Index")
     // 分页
-   // beego.Router("home/page/", &home.IndexController{}, "post:Paging")
+    beego.Router("home/paging", &home.IndexController{}, "post:Paging")
     // 文章详情
     beego.Router("detail/:id([0-9]+)", &home.IndexController{}, "get:Detail")
+    // 文章分类
+    beego.Router("home/category/:id([0-9]+)", &home.IndexController{}, "get:Category")
 
 }

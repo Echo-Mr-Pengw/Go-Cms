@@ -30,7 +30,7 @@
                     <ul>
                         {{range .tag}}
                             <li data-category-list-item-visible="true" style="display: block">
-                                <a href="https://www.cnblogs.com/cocowool/category/1053765.html" rel="" target="">{{.Name}}({{.Total}})</a></li>
+                                <a href="/home/category/{{.Id}}" rel="" target="">{{.Name}}({{.Total}})</a></li>
                         {{end}}
                         <a href="javascript:void(0)" onclick="sideColumnManager.loadMore(this)">更多</a></li>
                     </ul>

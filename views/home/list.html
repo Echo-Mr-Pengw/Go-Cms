@@ -1,4 +1,4 @@
-<div class="forFlow">
+
     {{range $v := .articleList}}
         <div class="day">
             <div class="postTitle">
@@ -16,18 +16,3 @@
             <div class="clear"></div>
         </div>
     {{end}}
-    <!--分页-->
-    <div class="topicListFooter">
-        <div id="nav_next_page">
-            <a href="/home/page">
-                下一页
-            </a>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    var total = {{.total}}
-    $.post("/home/page")
-</script>

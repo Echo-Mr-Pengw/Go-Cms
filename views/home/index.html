@@ -1,8 +1,56 @@
 {{.header}}
  <div id="main">
         <div id="mainContent">
-            {{.LayoutContent}}
+            <div class="topicListFooter" style="text-align:left; margin-top:-22px">
+                <div id="nav_next_page">
+                    <a href="#">
+                        下一页
+                    </a>
+                </div>
+            </div>
+            <div class="forFlow">
+                {{.LayoutContent}}
+            </div>
         </div>
      {{.left}}
 </div>
 {{.footer}}
+<script>
+    var  tmp        = 2;
+    var perPageNum  = 10;
+    var total       = "{{.total}}";
+    var currentPage = Math.ceil(total / perPageNum)
+
+    $("#nav_next_page > a").click(function() {
+        paging();
+    });
+
+    function paging()
+    {
+        if (tmp <= currentPage) {
+            $.post("/home/paging", {id: tmp}, function(ret) {
+                $(".forFlow").empty()
+                var html = '';
+                $.each(ret, function(i, v) {
+                    html += '<div class="day">\n' +
+                        '            <div class="postTitle">\n' +
+                        '                <a class="postTitle2 vertical-middle" target="_blank" href="/detail/'+v.id+'">\n' +
+                        '                    <span>'+v.title+'</span></a>\n' +
+                        '            </div>\n' +
+                        '            <div class="postCon">\n' +
+                        '                <div class="c_b_p_desc">摘要：'+v.abstract+'\n' +
+                        '                    <a href="/detail/'+v.id+'" target="_blank" class="c_b_p_desc_readmore">阅读全文</a></div>\n' +
+                        '            </div>\n' +
+                        '            <div class="clear"></div>\n' +
+                        '            <div class="postDesc">posted @ '+v.create_time + ' ' +  v.author+'\n' +
+                        '                <span data-post-id="13871469" class="post-view-count">阅读('+v.read_num+')</span>\n' +
+                        '            </div>\n' +
+                        '            <div class="clear"></div>\n' +
+                        '        </div>'
+                })
+                $(".forFlow").append(html);
+            })
+            ++tmp
+        }
+    }
+</script>

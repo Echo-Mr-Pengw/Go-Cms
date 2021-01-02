@@ -38,9 +38,9 @@ func GetArticleList() (art []Article, num int64) {
 //}
 
 // 连表查询正常显示的文章
-func GetNormalArticleList(startArticleId, endArticleId string) ([]orm.Params) {
+func GetNormalArticleList(startArticleId, endArticleId int) ([]orm.Params) {
 	var list []orm.Params
-	sql := "SELECT  a.id,a.title,a.abstract,a.author,a.create_time, ifnull(b.read_num, 0) as read_num FROM tbl_article as a LEFT JOIN tbl_article_read_num as b ON a.id = b.article_id WHERE a.id>=? AND a.id<=?"
+	sql := "SELECT  a.id,a.title,a.abstract,a.author,a.create_time, ifnull(b.read_num, 0) as read_num FROM tbl_article as a LEFT JOIN tbl_article_read_num as b ON a.id = b.article_id WHERE a.id>? AND a.id<=?"
 	orm.NewOrm().Raw(sql, startArticleId, endArticleId).Values(&list)
 	return list
 }
