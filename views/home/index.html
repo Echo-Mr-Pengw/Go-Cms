@@ -19,8 +19,9 @@
     var  tmp        = 2;
     var perPageNum  = 10;
     var total       = "{{.total}}";
+    var tagId       = "{{.tagId}}";
     var currentPage = Math.ceil(total / perPageNum)
-
+    console.log(12, tagId)
     $("#nav_next_page > a").click(function() {
         paging();
     });
@@ -28,7 +29,7 @@
     function paging()
     {
         if (tmp <= currentPage) {
-            $.post("/home/paging", {id: tmp}, function(ret) {
+            $.post("/home/paging", {"id": tmp, "tag_id": tagId}, function(ret) {
                 $(".forFlow").empty()
                 var html = '';
                 $.each(ret, function(i, v) {

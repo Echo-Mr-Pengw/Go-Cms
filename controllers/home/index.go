@@ -2,6 +2,7 @@ package home
 
 import (
 	"Go-Cms/models"
+	"fmt"
 	"github.com/astaxie/beego"
 	"strconv"
 )
@@ -25,15 +26,16 @@ func (c *IndexController) Index() {
 
 	startPage := 0
 	endPage   := 10
+	tagId     := c.Ctx.Input.Param(":id")
 
+	c.Data["tagId"]         = tagId
 	c.Data["total"]         = c.getTotalArticleNum()     // 文章总数
 	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
 	c.Data["topTenArt"]     = c.getTopTenArt()           // 最近发布的前10的文章
 	c.Data["tag"]           = c.getTagList()             // 标签列表
 	c.Data["profile"]       = c.getProfile()             // 获取个人简介
-	c.Data["articleList"]   = c.getArtList(startPage, endPage)             // 文章列表
+	c.Data["articleList"]   = c.getArtList(startPage, endPage, tagId)             // 文章列表
 	c.Data["topTenViewArt"] = c.getTopTenViewsArticle()  // 阅读量排名前10的文章
-
 
 	c.Layout  = "home/index.html"
 	c.TplName = "home/list.html"
@@ -75,8 +77,14 @@ func (c *IndexController) getTagList() (tag []models.ArticleTag) {
 }
 
 // 文章列表
-func (c *IndexController) getArtList(startPage, endPage int) (articleList interface{}) {
-	articleList = models.GetNormalArticleList(startPage, endPage)
+func (c *IndexController) getArtList(startPage, endPage int, tagId string) (articleList interface{}) {
+	articleList = models.GetNormalArticleList(startPage, endPage, tagId)
+	return
+}
+
+// 获取每个分类的文章列表
+func (c *IndexController) getPerCategoryArticle(tagId string, startPage, endPage int) (articleList interface{}){
+	articleList = models.GetNormalPerCategoryArticle(tagId, startPage, endPage)
 	return
 }
 
@@ -148,14 +156,36 @@ func (c *IndexController) Detail() {
 func (c *IndexController) Paging () {
 
 	id, _ := strconv.Atoi(c.GetString("id", "2"))
+	tagId := c.GetString("tag_id", "")
+
 	startPage := (id - 1) * pageNum
 	endPage   := id * pageNum
-
-	c.Data["json"] = c.getArtList(startPage, endPage)             // 文章列表
+	fmt.Println(tagId, startPage, endPage)
+	c.Data["json"] = c.getArtList(startPage, endPage, tagId)             // 文章列表
 	c.ServeJSON()
 }
 
 // 文章标签分类
 func (c *IndexController) Category() {
-	return
+
+	startPage := 0
+	endPage   := 10
+	tagId     := c.Ctx.Input.Param(":id")
+
+	fmt.Println(startPage, endPage, tagId)
+	c.Data["tagId"]         = tagId
+	c.Data["total"]         = c.getTotalArticleNum()     // 文章总数
+	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
+	c.Data["topTenArt"]     = c.getTopTenArt()           // 最近发布的前10的文章
+	c.Data["tag"]           = c.getTagList()             // 标签列表
+	c.Data["profile"]       = c.getProfile()             // 获取个人简介
+	c.Data["articleList"]   = c.getPerCategoryArticle(tagId, startPage, endPage)             // 文章列表
+	c.Data["topTenViewArt"] = c.getTopTenViewsArticle()  // 阅读量排名前10的文章
+
+	c.Layout  = "home/index.html"
+	c.TplName = "home/list.html"
+	c.LayoutSections = make(map[string]string)
+	c.LayoutSections["header"] = "home/header.html"
+	c.LayoutSections["footer"] = "home/footer.html"
+	c.LayoutSections["left"]   = "home/left.html"
 }

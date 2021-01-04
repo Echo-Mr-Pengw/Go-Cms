@@ -14,9 +14,9 @@
                 <div class="catListEssay">
                     <h3 class="catListTitle">最新随笔</h3>
                     <ul>
-                        {{range $k, $v := .topTenArt}}
+                        {{range $v := .topTenArt}}
                             <li>
-                                <a href="/detail/{{$v.Id}}">{{$k}}. {{$v.Title}}</a></li>
+                                <a href="/detail/{{$v.Id}}">{{$v.Title}}</a></li>
                         {{end}}
                     </ul>
                 </div>
@@ -25,8 +25,7 @@
             <!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
             <div id="sidebar_categories">
                 <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
-                    <h3 class="catListTitle">随笔分类
-                        <span style="font-size:11px;font-weight:normal">121</span></h3>
+                    <h3 class="catListTitle">随笔分类</h3>
                     <ul>
                         {{range .tag}}
                             <li data-category-list-item-visible="true" style="display: block">
@@ -36,8 +35,7 @@
                     </ul>
                 </div>
                 <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
-                    <h3 class="catListTitle">随笔档案
-                        <span style="font-size:11px;font-weight:normal">(396)</span></h3>
+                    <h3 class="catListTitle">随笔档案</h3>
                     <ul>
                         <li data-category-list-item-visible="true" style="display: block">
                             <a href="https://www.cnblogs.com/cocowool/archive/2019/06.html" rel="" target="">2019年6月(1)</a></li>
@@ -67,7 +65,7 @@
                         <ul style="word-break:break-all">
                             {{range .topTenViewArt}}
                                 <li>
-                                    <a href="/detail/{{.Id}}">{{.Id}}. {{.Title}}({{.ReadNum}})</a></li>
+                                    <a href="/detail/{{.Id}}">{{.Title}}({{.ReadNum}})</a></li>
                             {{end}}
                         </ul>
                     </div>

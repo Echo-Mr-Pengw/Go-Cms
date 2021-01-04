@@ -2,7 +2,6 @@ package admin
 
 import (
 	"Go-Cms/models"
-	"fmt"
 	"strconv"
 )
 
@@ -42,8 +41,8 @@ func (c *ArticleController) Add() {
 		if err := c.ParseForm(&article); err != nil {
 			c.ResponseJson(0, "参数解析失败", "")
 		}
-		fmt.Println(article)
-		article.Abstract = article.Content[0:435]
+		//fmt.Println(article)
+		//article.Abstract = article.Content[0:435]
 
 		if models.AddArticle(&article) == 0 {
 			c.ResponseJson(0, "添加失败", "")
