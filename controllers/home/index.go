@@ -2,7 +2,6 @@ package home
 
 import (
 	"Go-Cms/models"
-	"fmt"
 	"github.com/astaxie/beego"
 	"strconv"
 )
@@ -160,7 +159,7 @@ func (c *IndexController) Paging () {
 
 	startPage := (id - 1) * pageNum
 	endPage   := id * pageNum
-	fmt.Println(tagId, startPage, endPage)
+
 	c.Data["json"] = c.getArtList(startPage, endPage, tagId)             // 文章列表
 	c.ServeJSON()
 }
@@ -172,9 +171,8 @@ func (c *IndexController) Category() {
 	endPage   := 10
 	tagId     := c.Ctx.Input.Param(":id")
 
-	fmt.Println(startPage, endPage, tagId)
 	c.Data["tagId"]         = tagId
-	c.Data["total"]         = c.getTotalArticleNum()     // 文章总数
+	c.Data["total"]         = models.GetPerCategoryArticleNum(tagId)     // 文章总数
 	c.Data["links"]         = c.getLinks()               // 正常状态的友情链接
 	c.Data["topTenArt"]     = c.getTopTenArt()           // 最近发布的前10的文章
 	c.Data["tag"]           = c.getTagList()             // 标签列表

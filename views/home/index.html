@@ -3,10 +3,9 @@
         <div id="mainContent">
             <div class="topicListFooter" style="text-align:left; margin-top:-22px">
                 <div id="nav_next_page">
-                    <a href="#">
-                        下一页
-                    </a>
+                    <div class="M-box5 m-style"></div>
                 </div>
+
             </div>
             <div class="forFlow">
                 {{.LayoutContent}}
@@ -15,21 +14,20 @@
      {{.left}}
 </div>
 {{.footer}}
-<script>
-    var  tmp        = 2;
-    var perPageNum  = 10;
-    var total       = "{{.total}}";
-    var tagId       = "{{.tagId}}";
-    var currentPage = Math.ceil(total / perPageNum)
-    console.log(12, tagId)
-    $("#nav_next_page > a").click(function() {
-        paging();
-    });
-
-    function paging()
-    {
-        if (tmp <= currentPage) {
-            $.post("/home/paging", {"id": tmp, "tag_id": tagId}, function(ret) {
+<script type="text/javascript">
+    var total  = "{{.total}}";
+    var tagId      = "{{.tagId}}";
+    var pageCount = Math.ceil(total / 10)
+    console.log(total, tagId, pageCount, 11)
+    $('.M-box5').pagination({
+        pageCount: pageCount,
+        jump: false,
+        callback: function (api) {
+            var data = {
+                id: api.getCurrent(),
+                tag_id: tagId
+            };
+            $.post('/home/paging', data, function (ret) {
                 $(".forFlow").empty()
                 var html = '';
                 $.each(ret, function(i, v) {
@@ -50,8 +48,47 @@
                         '        </div>'
                 })
                 $(".forFlow").append(html);
-            })
-            ++tmp
+            });
         }
-    }
+    });
 </script>
+{{/*<script>*/}}
+{{/*    var  tmp        = 2;*/}}
+{{/*    var perPageNum  = 10;*/}}
+{{/*    var total       = "{{.total}}";*/}}
+{{/*    var tagId       = "{{.tagId}}";*/}}
+{{/*    var currentPage = Math.ceil(total / perPageNum)*/}}
+{{/*    console.log(12, tagId)*/}}
+{{/*    $("#nav_next_page > a").click(function() {*/}}
+{{/*        paging();*/}}
+{{/*    });*/}}
+
+{{/*    function paging()*/}}
+{{/*    {*/}}
+{{/*        if (tmp <= currentPage) {*/}}
+{{/*            $.post("/home/paging", {"id": tmp, "tag_id": tagId}, function(ret) {*/}}
+{{/*                $(".forFlow").empty()*/}}
+{{/*                var html = '';*/}}
+{{/*                $.each(ret, function(i, v) {*/}}
+{{/*                    html += '<div class="day">\n' +*/}}
+{{/*                        '            <div class="postTitle">\n' +*/}}
+{{/*                        '                <a class="postTitle2 vertical-middle" target="_blank" href="/detail/'+v.id+'">\n' +*/}}
+{{/*                        '                    <span>'+v.title+'</span></a>\n' +*/}}
+{{/*                        '            </div>\n' +*/}}
+{{/*                        '            <div class="postCon">\n' +*/}}
+{{/*                        '                <div class="c_b_p_desc">摘要：'+v.abstract+'\n' +*/}}
+{{/*                        '                    <a href="/detail/'+v.id+'" target="_blank" class="c_b_p_desc_readmore">阅读全文</a></div>\n' +*/}}
+{{/*                        '            </div>\n' +*/}}
+{{/*                        '            <div class="clear"></div>\n' +*/}}
+{{/*                        '            <div class="postDesc">posted @ '+v.create_time + ' ' +  v.author+'\n' +*/}}
+{{/*                        '                <span data-post-id="13871469" class="post-view-count">阅读('+v.read_num+')</span>\n' +*/}}
+{{/*                        '            </div>\n' +*/}}
+{{/*                        '            <div class="clear"></div>\n' +*/}}
+{{/*                        '        </div>'*/}}
+{{/*                })*/}}
+{{/*                $(".forFlow").append(html);*/}}
+{{/*            })*/}}
+{{/*            ++tmp*/}}
+{{/*        }*/}}
+{{/*    }*/}}
+{{/*</script>*/}}

@@ -109,3 +109,9 @@ func GetTopTenNormalArticleByArtId(articleId []uint) (art []Article, num int64) 
 	num, _ = orm.NewOrm().QueryTable(new(Article)).Filter("id__in", articleId).All(&art, "id", "title")
 	return
 }
+
+// 获取各分类下
+func GetPerCategoryArticleNum(tagId string) (total int64){
+	total, _ = orm.NewOrm().QueryTable(new(Article)).Filter("tag_id", tagId).Filter("status", 1).Count()
+	return
+}
