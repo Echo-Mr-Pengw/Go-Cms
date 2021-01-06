@@ -51,23 +51,25 @@
 
 ## Install
 
-1.  把项目拉到本地   
+1. 把项目拉到本地   
 
    `git clone https://github.com/Echo-Mr-Pengw/Go-Cms.git`
-
-2. 进入`Go-Cms`目录，运行`bee run`    
-
+   
+2. 导入数据库 `go_cms.sql`
+  
+3. 进入`Go-Cms`目录，运行`bee run`   
    ```
    cd Go-Cms
    bee run
    ```
 
-3. 前台访问地址
+4. 前台访问地址
 
    `http://localhost:8181/home`
 
-4. 后台访问地址
+5. 后台访问地址
 
-   `http://localhost:8181`    
+   `http://localhost:8181`， 后台初始化账户：admin，密码：123456
+   
 ## End
   欢迎👏提出问题和建议，本项目是基于在学习Go后的实践。如果客官你有什么开源项目需要志同道合者一起加入，我有意愿一起加入。我的微信：Weipeng_dream，加好友时，请备注：github
