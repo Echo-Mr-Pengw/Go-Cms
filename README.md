@@ -54,7 +54,11 @@
 
 1. 把项目拉到本地   
 
-   `git clone https://github.com/Echo-Mr-Pengw/Go-Cms.git`
+   ```
+   git clone https://github.com/Echo-Mr-Pengw/Go-Cms.git
+   或者
+   go get github.com/Echo-Mr-Pengw/Go-Cms
+   ```
    
 2. 导入数据库 `go_cms.sql`
   
